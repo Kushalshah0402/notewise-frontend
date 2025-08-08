@@ -1,0 +1,245 @@
+/* Music Widget Container */
+.music-widget {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  font-family: inherit;
+}
+
+/* Music Icon Button */
+.music-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(156, 163, 175, 0.06) 50%, 
+    rgba(255, 255, 255, 0.04) 100%);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-size: 1.5rem;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.music-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(156, 163, 175, 0.08) 0%, 
+    rgba(209, 213, 219, 0.06) 50%, 
+    rgba(156, 163, 175, 0.04) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.music-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(209, 213, 219, 0.3);
+}
+
+.music-icon:hover::before {
+  opacity: 1;
+}
+
+.music-icon:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Music Options Panel */
+.music-options {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(156, 163, 175, 0.08) 50%, 
+    rgba(255, 255, 255, 0.06) 100%);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(156, 163, 175, 0.2);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 140px;
+  animation: slideUp 0.3s ease-out;
+  transform-origin: bottom right;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Music Option Buttons */
+.music-options button {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(156, 163, 175, 0.06) 100%);
+  color: #e5e7eb;
+  border: 1px solid rgba(156, 163, 175, 0.15);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.music-options button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(156, 163, 175, 0.1) 0%, 
+    rgba(209, 213, 219, 0.08) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.music-options button:hover {
+  background: linear-gradient(135deg, 
+    rgba(156, 163, 175, 0.12) 0%, 
+    rgba(209, 213, 219, 0.08) 100%);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-color: rgba(209, 213, 219, 0.25);
+}
+
+.music-options button:hover::before {
+  opacity: 1;
+}
+
+.music-options button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Special styling for Stop button */
+.music-options button:last-child {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  border-color: rgba(239, 68, 68, 0.3);
+  margin-top: 4px;
+}
+
+.music-options button:last-child::before {
+  background: linear-gradient(135deg, 
+    rgba(239, 68, 68, 0.2) 0%, 
+    rgba(220, 38, 38, 0.15) 100%);
+}
+
+.music-options button:last-child:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 
+    0 4px 12px rgba(239, 68, 68, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .music-widget {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .music-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  
+  .music-options {
+    bottom: 65px;
+    min-width: 120px;
+    padding: 12px;
+  }
+  
+  .music-options button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Floating animation for the widget */
+@keyframes musicFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.music-icon {
+  animation: musicFloat 4s ease-in-out infinite;
+}
+
+.music-icon:hover {
+  animation: none;
+}
+
+/* Subtle glow effect */
+.music-icon::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, 
+    rgba(156, 163, 175, 0.1) 0%, 
+    rgba(209, 213, 219, 0.08) 100%);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(4px);
+}
+
+.music-icon:hover::after {
+  opacity: 1;
+}

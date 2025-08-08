@@ -1,0 +1,8 @@
+/* DashboardBanner.css */
+.dashboard-banner {
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin: 0rem 0;
+  background-color: white;
+}

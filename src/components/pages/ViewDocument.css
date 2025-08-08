@@ -1,0 +1,177 @@
+.view-doc-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 90vh;
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.blurred-doc {
+  position: relative;
+  display: inline-block;
+}
+
+.preview-thumb {
+  width: 300px;
+  height: auto;
+  filter: blur(5px);
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.signup-link {
+  color: blue;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.feedback-section {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.feedback-prompt {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.feedback-buttons {
+  margin-top: 0.5rem;
+}
+
+.feedback-buttons button {
+  margin: 0 10px;
+  padding: 6px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.feedback-buttons button.selected {
+  animation: pulse 0.3s ease;
+}
+
+.feedback-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.summarize-section button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.summary-box {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notepad-section textarea {
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+.notepad-rnd {
+  z-index: 1000;
+  position: fixed !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+}
+
+.floating-notepad {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.notepad-header {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  cursor: move;
+  color: #000000;
+  user-select: none;
+}
+
+.floating-notepad textarea {
+  flex: 1;
+  min-height: 80px;
+  max-height: 200px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  font-family: inherit;
+  margin-bottom: 0.7rem;
+}
+
+.back-button {
+  background: transparent;
+  border: none;
+  color: #000; /* black text */
+  font-size: 1rem;
+  cursor: pointer;
+  /* margin-bottom: 1rem; */
+  margin-right: 1350px;
+  margin-bottom: -40px
+}
+
+.save-doc-button {
+  margin-left: 1300px;
+  padding: .9rem 1.2rem;
+  background-color: #000; /* Black */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+  margin-top: -20px;
+}
+
+.save-doc-button:hover {
+  background-color: #ffffff;
+  color: #000;
+  border: 2px solid #000;
+}

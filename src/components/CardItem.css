@@ -1,0 +1,119 @@
+.cards__item__link {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.likes-overlay {
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+  background: white;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.your-module-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 8px;
+}
+
+.updated-modules-group .likes-overlay {
+  bottom: 55px; /* or however high you want it */
+}
+
+.uploader-avatar {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.cards__item__pic-wrap {
+  position: relative;
+}
+
+.cards__item__pic-wrap .uploader-avatar {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cards__item__pic-wrap:hover .uploader-avatar {
+  opacity: 1;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: #1a1a1a;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 0;
+}
+
+.cards__item__text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: capitalize;
+}
+
+.cards__item__info {
+  height: 70px;
+  background: #f0f4f9;
+  border-top: none;
+}
+
+.cards__item__pic-wrap::after {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  background: black;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.save-icon:hover {
+  transform: scale(1.15);
+  background: #bab9b9;
+}
+
+.save-icon i {
+  color: var(--primary-color);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 1. Make save icon hidden by default */
+.save-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+}
+
+.cards__item__pic-wrap:hover .save-icon {
+  opacity: 1;
+}
+
+.uploader-avatar:hover {
+  outline: 2px solid #78aaed;
+  box-shadow: 0 0 6px rgba(26, 115, 232, 0.3);
+}

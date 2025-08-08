@@ -1,0 +1,41 @@
+.update-modules {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.update-modules h2 {
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.update-modules input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.update-modules button {
+  padding: 10px 20px;
+  background-color: #0052cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.update-modules button:hover {
+  background-color: #003f99;
+}
+
+.update-modules p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}

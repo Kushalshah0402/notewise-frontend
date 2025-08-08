@@ -1,0 +1,264 @@
+/* Professional Footer Styles */
+.footer-container {
+  background: #000000;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid #333333;
+}
+
+.footer-subscription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #ffffff;
+  max-width: 800px;
+  width: 100%;
+}
+
+.footer-subscription-heading {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.footer-subscription-text {
+  font-size: 1.1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.footer-links {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6rem;
+  padding: 1rem 2rem;
+}
+
+.footer-link-wrapper {
+  display: flex;
+  gap: 6rem;
+}
+
+.footer-link-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 250px;
+}
+
+.footer-link-items h2 {
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.footer-link-items h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: #ffffff;
+}
+
+.footer-link-items a {
+  color: #cccccc;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.5rem 0;
+}
+
+.footer-link-items a:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.social-media {
+  width: 100%;
+  max-width: 800px;
+}
+
+.social-media-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #333333;
+}
+
+.footer-logo {
+  margin-bottom: 1rem;
+}
+
+.social-logo {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  letter-spacing: -1px;
+}
+
+.social-logo:hover {
+  transform: scale(1.05);
+}
+
+.social-logo .fa-book {
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+.website-rights {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.social-icon-link {
+  color: #cccccc;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+}
+
+.social-icon-link:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    padding: 2rem 0;
+  }
+
+  .footer-subscription {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-subscription-heading {
+    font-size: 1.5rem;
+  }
+
+  .footer-subscription-text {
+    font-size: 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-link-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .footer-link-items {
+    min-width: auto;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .social-media {
+    padding: 1.5rem 1rem;
+  }
+
+  .social-media-wrap {
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  .social-logo {
+    font-size: 1.75rem;
+  }
+
+  .social-icons {
+    gap: 1.5rem;
+  }
+
+  .social-icon-link {
+    width: 45px;
+    height: 45px;
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer-subscription-heading {
+    font-size: 1.25rem;
+  }
+
+  .footer-subscription-text {
+    font-size: 0.9rem;
+  }
+
+  .footer-link-items h2 {
+    font-size: 1.1rem;
+  }
+
+  .footer-link-items a {
+    font-size: 0.9rem;
+  }
+
+  .social-logo {
+    font-size: 1.5rem;
+  }
+
+  .social-icons {
+    gap: 1rem;
+  }
+
+  .social-icon-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+}
