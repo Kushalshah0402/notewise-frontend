@@ -29,6 +29,7 @@ function ViewDocument() {
   const [noteLoading, setNoteLoading] = useState(false);
   const [noteSaved, setNoteSaved] = useState(false);
   const [saved, setSaved] = useState(false);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Fetch document details
   useEffect(() => {
@@ -38,7 +39,7 @@ function ViewDocument() {
           ? { headers: { Authorization: `Bearer ${token}` } }
           : {};
         const res = await axios.get(
-          `http://localhost:5001/api/auth/document/${id}`,
+          `${API_URL}/api/auth/document/${id}`,
           config
         );
 
@@ -77,7 +78,7 @@ function ViewDocument() {
     ) {
       setNoteLoading(true);
       axios
-        .get(`http://localhost:5001/api/notes/${document._id}`, {
+        .get(`${API_URL}/api/notes/${document._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -108,7 +109,7 @@ function ViewDocument() {
     try {
       if (userVote === "like") {
         await axios.post(
-          `http://localhost:5001/api/auth/document/${id}/remove-like`,
+          `${API_URL}/api/auth/document/${id}/remove-like`,
           {},
           config
         );
@@ -117,13 +118,13 @@ function ViewDocument() {
       } else {
         if (userVote === "dislike") {
           await axios.post(
-            `http://localhost:5001/api/auth/document/${id}/remove-dislike`,
+            `${API_URL}/api/auth/document/${id}/remove-dislike`,
             {},
             config
           );
         }
         await axios.post(
-          `http://localhost:5001/api/auth/document/${id}/like`,
+          `${API_URL}/api/auth/document/${id}/like`,
           {},
           config
         );
@@ -133,7 +134,7 @@ function ViewDocument() {
 
       // 🆕 Fetch fresh document with updated like/dislike counts
       const res = await axios.get(
-        `http://localhost:5001/api/auth/document/${id}`,
+        `${API_URL}/api/auth/document/${id}`,
         config
       );
       setLikes(res.data.document.likes || 0);
@@ -165,7 +166,7 @@ function ViewDocument() {
     try {
       if (userVote === "dislike") {
         await axios.post(
-          `http://localhost:5001/api/auth/document/${id}/remove-dislike`,
+          `${API_URL}/api/auth/document/${id}/remove-dislike`,
           {},
           config
         );
@@ -177,13 +178,13 @@ function ViewDocument() {
       } else {
         if (userVote === "like") {
           await axios.post(
-            `http://localhost:5001/api/auth/document/${id}/remove-like`,
+            `${API_URL}/api/auth/document/${id}/remove-like`,
             {},
             config
           );
         }
         await axios.post(
-          `http://localhost:5001/api/auth/document/${id}/dislike`,
+          `${API_URL}/api/auth/document/${id}/dislike`,
           {},
           config
         );
@@ -191,7 +192,7 @@ function ViewDocument() {
         localStorage.setItem(voteKey, "dislike");
       }
       const res = await axios.get(
-        `http://localhost:5001/api/auth/document/${id}`,
+        `${API_URL}/api/auth/document/${id}`,
         config
       );
       setLikes(res.data.document.likes || 0);
@@ -216,7 +217,7 @@ function ViewDocument() {
   //     }
 
   //     const res = await axios.post(
-  //       `http://localhost:5001/api/auth/document/${document._id}/summarize`,
+  //       `${API_URL}/api/auth/document/${document._id}/summarize`,
   //       {},
   //       { headers: { Authorization: `Bearer ${token}` } }
   //     );
@@ -233,7 +234,7 @@ function ViewDocument() {
     setNoteSaved(false);
     try {
       await axios.post(
-        `http://localhost:5001/api/notes/${document._id}`,
+        `${API_URL}/api/notes/${document._id}`,
         { content: note },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -265,7 +266,7 @@ function ViewDocument() {
 
     try {
       const res = await fetch(
-        `http://localhost:5001/api/auth/${
+        `${API_URL}/api/auth/${
           alreadySaved ? "unsave" : "save"
         }/${id}`,
         {
@@ -324,7 +325,7 @@ function ViewDocument() {
       {user ? (
         <>
           <iframe
-            src={`http://localhost:5001/api/auth/secure-file/${document.filename}`}
+            src={`${API_URL}/api/auth/secure-file/${document.filename}`}
             title="PDF viewer"
             className="pdf-viewer"
             style={{
@@ -469,7 +470,7 @@ function ViewDocument() {
       ) : (
         <div className="blurred-doc">
           <img
-            src={`http://localhost:5001/${document.thumbnail}`}
+            src={`${API_URL}/${document.thumbnail}`}
             alt="Preview"
             className="preview-thumb"
           />

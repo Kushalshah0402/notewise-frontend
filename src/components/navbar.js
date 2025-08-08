@@ -12,6 +12,8 @@ function Navbar() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -180,7 +182,7 @@ function Navbar() {
                     src={
                       typeof user?.avatar === "string" &&
                       user.avatar.startsWith("/uploads")
-                        ? `http://localhost:5001${user.avatar}`
+                        ? `${API_URL}${user.avatar}`
                         : "/images/avatar.png"
                     }
                     alt="User Avatar"
@@ -201,7 +203,7 @@ function Navbar() {
                           src={
                             typeof user?.avatar === "string" &&
                             user.avatar.startsWith("/uploads")
-                              ? `http://localhost:5001${user.avatar}`
+                              ? `${API_URL}${user.avatar}`
                               : "/images/avatar.png"
                           }
                           alt="User Avatar"

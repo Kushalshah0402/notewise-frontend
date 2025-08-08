@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [unseenWarnings, setUnseenWarnings] = useState(0);
   const [unseenInbox, setUnseenInbox] = useState(0);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   /* ------------------------- helper -------------------------- */
   const persist = (u, t) => {
@@ -115,7 +116,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUnseen = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/auth/warnings", {
+        const res = await axios.get(`${API_URL}/api/auth/warnings`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -151,7 +152,7 @@ export const AuthProvider = ({ children }) => {
     const fetchInbox = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5001/api/messages/inbox",
+          `${API_URL}/api/messages/inbox`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -181,7 +182,7 @@ export const AuthProvider = ({ children }) => {
     if (!token) return;
     const id = setInterval(async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/auth/me");
+        const res = await axios.get(`${API_URL}/api/auth/me`);
         if (res.data.user.isActive === false) logout("/suspended");
         else updateUser(res.data.user);
       } catch (e) {
@@ -202,7 +203,7 @@ export const AuthProvider = ({ children }) => {
     if (idCard) form.append("idCard", idCard);
 
     const res = await axios.put(
-      `http://localhost:5001/api/auth/update-profile/${user._id}`,
+      `${API_URL}/api/auth/update-profile/${user._id}`,
       form,
       { headers: { "Content-Type": "multipart/form-data" } }
     );

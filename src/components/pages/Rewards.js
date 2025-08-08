@@ -9,11 +9,12 @@ import { Link } from "react-router-dom";
 function Rewards() {
   const [books, setBooks] = useState([]);
   const { user, token, updateUser, loading } = useAuth();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/rewards/books", {
+        const res = await axios.get(`${API_URL}/api/rewards/books`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -32,7 +33,7 @@ function Rewards() {
   const handleRedeem = async (bookId) => {
     try {
       const res = await axios.post(
-        "http://localhost:5001/api/rewards/redeem",
+        `${API_URL}/api/rewards/redeem`,
         { bookId },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -41,7 +42,7 @@ function Rewards() {
       );
       toast.success(res.data.message);
       // ✅ fetch updated user with ownedBooks + points
-      const refreshed = await axios.get("http://localhost:5001/api/auth/me", {
+      const refreshed = await axios.get(`${API_URL}/api/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });

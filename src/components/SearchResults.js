@@ -30,6 +30,8 @@ function SearchResults() {
   const query = useQuery().get("q");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useAuth();
 
   useEffect(() => {
@@ -37,7 +39,7 @@ function SearchResults() {
 
     const fetchAndSearch = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/auth/documents");
+        const res = await axios.get(`${API_URL}/api/auth/documents`);
         if (!res.data.success) throw new Error("Failed to load documents");
 
         const allDocs = res.data.documents;

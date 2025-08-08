@@ -11,12 +11,14 @@ export default function Cards({ refreshTrigger }) {
   const [mostLikedDocs, setMostLikedDocs] = useState([]);
   const [newestDocs, setNewestDocs] = useState([]);
   const [recentlyViewedDocs, setRecentlyViewedDocs] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
 
   useEffect(() => {
     const fetchDocs = async () => {
       try {
-        const docRes = await fetch("http://localhost:5001/api/auth/documents");
+        const docRes = await fetch(`${API_URL}/api/auth/documents`);
         const docData = await docRes.json();
         if (!docData.success) return;
         const allDocs = docData.documents;
@@ -43,19 +45,19 @@ export default function Cards({ refreshTrigger }) {
         setUserModulesDocs(grouped);
 
         const likedRes = await fetch(
-          "http://localhost:5001/api/auth/documents/most-liked"
+          `${API_URL}/api/auth/documents/most-liked`
         );
         const likedData = await likedRes.json();
         if (likedData.success) setMostLikedDocs(likedData.documents);
 
         const newestRes = await fetch(
-          "http://localhost:5001/api/auth/documents/newest"
+          `${API_URL}/api/auth/documents/newest`
         );
         const newestData = await newestRes.json();
 
         if (user && token) {
           const recentRes = await fetch(
-            "http://localhost:5001/api/auth/documents/recently-viewed",
+            `${API_URL}/api/auth/documents/recently-viewed`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           const recentData = await recentRes.json();

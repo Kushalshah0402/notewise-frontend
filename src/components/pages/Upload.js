@@ -43,6 +43,7 @@ export default function Upload() {
   const [dragActive, setDragActive] = useState(false);
   const [step, setStep] = useState(1);
   const [fileDetails, setFileDetails] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
   const allFieldsFilled = fileDetails.every(
     (entry) => entry.university && entry.courseCode && entry.title
   );
@@ -321,7 +322,7 @@ export default function Upload() {
 
                   try {
                     const response = await fetch(
-                      "http://localhost:5001/api/auth/upload",
+                      `${API_URL}/api/auth/upload`,
                       {
                         method: "POST",
                         body: formData,

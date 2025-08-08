@@ -9,6 +9,8 @@ function BroadcastMessage() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [loadingSend, setLoadingSend] = useState(false);
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ function BroadcastMessage() {
     try {
       setLoadingSend(true);
       const res = await axios.post(
-        "http://localhost:5001/api/admin/broadcast-message",
+        `${API_URL}/api/admin/broadcast-message`,
         { title, body },
         {
           headers: { Authorization: `Bearer ${token}` },

@@ -7,13 +7,14 @@ function Warnings() {
   const { token, setUnseenWarnings } = useAuth();
   const [warnings, setWarnings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchWarnings = async () => {
       try {
         setLoading(true);
         const res = await axios.get(
-          "http://localhost:5001/api/auth/warnings/all",
+          `${API_URL}/api/auth/warnings/all`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -26,7 +27,7 @@ function Warnings() {
         // ✅ Mark all as seen and clear badge after page loads
 
         await axios.patch(
-          "http://localhost:5001/api/auth/warnings/mark-seen",
+          `${API_URL}/api/auth/warnings/mark-seen`,
           null,
           {
             headers: { Authorization: `Bearer ${token}` },

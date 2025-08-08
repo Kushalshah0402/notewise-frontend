@@ -13,6 +13,7 @@ export default function SignUp() {
     password: "",
     idCard: null,
   });
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +54,7 @@ export default function SignUp() {
       formPayload.append("idCard", formData.idCard);
 
       const response = await axios.post(
-        "http://localhost:5001/api/auth/register",
+        "${API_URL}/api/auth/register",
         formPayload,
         {
           withCredentials: true,
@@ -108,7 +109,7 @@ export default function SignUp() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5001/api/auth/login",
+        `${API_URL}/api/auth/login`,
         {
           email: loginEmail,
           password: loginPassword,

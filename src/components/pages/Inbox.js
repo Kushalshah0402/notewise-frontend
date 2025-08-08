@@ -7,13 +7,14 @@ function Inbox() {
   const { token } = useAuth();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
         setLoading(true);
         const res = await axios.get(
-          "http://localhost:5001/api/messages/inbox",
+          `${API_URL}/api/messages/inbox`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -32,7 +33,7 @@ function Inbox() {
   const markAsRead = async (id) => {
     try {
       await axios.post(
-        `http://localhost:5001/api/messages/mark-read/${id}`,
+        `${API_URL}/api/messages/mark-read/${id}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -6,6 +6,8 @@ export default function FeedbackPage() {
   const [type, setType] = useState("feedback");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,8 +16,8 @@ export default function FeedbackPage() {
     try {
       const route =
         type === "feedback"
-          ? "http://localhost:5001/api/auth/send-feedback"
-          : "http://localhost:5001/api/auth/report-problem";
+          ? `${API_URL}/api/auth/send-feedback`
+          : `${API_URL}/api/auth/report-problem`;
 
       const res = await axios.post(route, form);
       setStatus(res.data.message);

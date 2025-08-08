@@ -7,6 +7,7 @@ export default function UpdateModules({ onModulesUpdated }) {
   const { token, updateUser } = useAuth();
   const [modules, setModules] = useState("");
   const [status, setStatus] = useState("");
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +25,7 @@ export default function UpdateModules({ onModulesUpdated }) {
       console.log("Submitting with token:", token);
 
       // Fetch existing modules
-      const resMe = await axios.get("http://localhost:5001/api/auth/me", {
+      const resMe = await axios.get(`${API_URL}/api/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -37,7 +38,7 @@ export default function UpdateModules({ onModulesUpdated }) {
 
       // Save merged modules to backend
       const res = await axios.post(
-        "http://localhost:5001/api/auth/update-modules",
+        `${API_URL}/api/auth/update-modules`,
         { modules: mergedModules },
         { headers: { Authorization: `Bearer ${token}` } }
       );

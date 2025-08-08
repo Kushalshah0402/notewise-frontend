@@ -12,6 +12,7 @@ export default function ResetPassword() {
   const [submitting, setSubmitting] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const email = location.state?.email;
 
@@ -30,7 +31,7 @@ export default function ResetPassword() {
 
     setSubmitting(true);
     try {
-      await axios.post("http://localhost:5001/api/auth/reset-password", {
+      await axios.post(`${API_URL}/api/auth/reset-password`, {
         email,
         newPassword: password,
       });

@@ -13,13 +13,14 @@ function Profile() {
   const [preview, setPreview] = useState(null);
   const [myDocuments, setMyDocuments] = useState([]);
   const [idCard, setIdCard] = useState(null);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (user) {
       setUsername(user.username || "");
       setPreview(
         user.avatar
-          ? `http://localhost:5001${user.avatar}`
+          ? `${API_URL}${user.avatar}`
           : "/images/avatar.png"
       );
 
@@ -27,7 +28,7 @@ function Profile() {
       const fetchDocs = async () => {
         try {
           const res = await axios.get(
-            `http://localhost:5001/api/auth/documents/user/${user._id}`
+            `${API_URL}/api/auth/documents/user/${user._id}`
           );
           console.log("📦 Documents response:", res.data);
           if (res.data.success) {
@@ -83,7 +84,7 @@ function Profile() {
 
   const deleteDocument = async (docId) => {
     try {
-      await axios.delete(`http://localhost:5001/api/auth/documents/${docId}`);
+      await axios.delete(`${API_URL}/api/auth/documents/${docId}`);
       setMyDocuments((prev) => prev.filter((doc) => doc._id !== docId));
     } catch (err) {
       console.error("Failed to delete document", err);
@@ -155,7 +156,7 @@ function Profile() {
                     src={
                       doc.thumbnail?.startsWith("http")
                         ? doc.thumbnail
-                        : `http://localhost:5001/${doc.thumbnail}`
+                        : `${API_URL}/${doc.thumbnail}`
                     }
                     alt={doc?.title}
                     className="document-thumbnail"

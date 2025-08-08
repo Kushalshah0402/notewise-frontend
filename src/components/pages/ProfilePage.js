@@ -15,12 +15,13 @@ export default function ProfilePage() {
   const [otherReasonText, setOtherReasonText] = useState("");
   const [isSubmittingReport, setIsSubmittingReport] = useState(false);
   const { user: currentUser, loading } = useAuth();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5001/api/auth/profile/${userId}`
+          `${API_URL}/api/auth/profile/${userId}`
         );
         setProfile(res.data.user);
         setDocuments(res.data.documents);
@@ -61,7 +62,7 @@ export default function ProfilePage() {
     setIsSubmittingReport(true);
     try {
       await axios.post(
-        "http://localhost:5001/api/auth/report-user",
+        `${API_URL}/api/auth/report-user`,
         {
           reportedUserId: profile._id,
           reportedUsername: profile.username,
@@ -118,7 +119,7 @@ export default function ProfilePage() {
               src={
                 profile.avatar?.startsWith("http")
                   ? profile.avatar
-                  : `http://localhost:5001${profile.avatar}`
+                  : `${API_URL}${profile.avatar}`
               }
               alt={profile.username}
               className="profile-avatar-large"
@@ -180,7 +181,7 @@ export default function ProfilePage() {
                       src={
                         doc.thumbnail?.startsWith("http")
                           ? doc.thumbnail
-                          : `http://localhost:5001/${doc.thumbnail}`
+                          : `${API_URL}/${doc.thumbnail}`
                       }
                       alt={doc.title}
                       className="document-thumbnail"

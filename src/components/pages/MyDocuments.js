@@ -11,13 +11,14 @@ export default function MyDocuments() {
   const [groupedDocs, setGroupedDocs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchSavedDocs = async () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          "http://localhost:5001/api/auth/my-documents",
+          `${API_URL}/api/auth/my-documents`,
           {
             headers: { Authorization: `Bearer ${token}` },
             withCredentials: true,

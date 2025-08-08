@@ -12,6 +12,7 @@ function Home() {
   const { user, token, updateUser } = useAuth();
   const [modulesUpdated, setModulesUpdated] = useState(false);
   const [currentModules, setCurrentModules] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (user) {
@@ -25,7 +26,7 @@ function Home() {
     );
 
     try {
-      const res = await fetch("http://localhost:5001/api/auth/update-modules", {
+      const res = await fetch(`${API_URL}/api/auth/update-modules`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

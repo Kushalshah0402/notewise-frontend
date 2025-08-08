@@ -28,6 +28,7 @@ function ReaderPage() {
   const [numPages, setNumPages] = useState(null);
   const bookmarkKey = `bookmark-${filename}`;
   const pageRefs = useRef({});
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const bookId = filenameToId[filename];
@@ -39,7 +40,7 @@ function ReaderPage() {
     let objectUrl;
 
     axios
-      .get(`http://localhost:5001/api/books/secure-book/${filename}`, {
+      .get(`${API_URL}/api/books/secure-book/${filename}`, {
         responseType: "blob",
         headers: { Authorization: `Bearer ${token}` },
       })

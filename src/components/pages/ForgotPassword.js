@@ -9,6 +9,7 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const isAllowedEmail = (email) =>
     /@(?:u\.nus\.edu|smu\.edu\.sg|e\.ntu\.edu\.sg)$/i.test(email);
@@ -24,7 +25,7 @@ export default function ForgotPassword() {
     setSubmitting(true);
     try {
       await axios.post(
-        "http://localhost:5001/api/auth/request-reset-password",
+        `${API_URL}/api/auth/request-reset-password`,
         {
           email,
         }

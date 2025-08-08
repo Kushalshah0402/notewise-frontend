@@ -18,6 +18,7 @@ function CardItem({
   const navigate = useNavigate();
   const { user, token, updateUser } = useAuth();
   const [saved, setSaved] = useState(false);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (user?.savedDocuments?.includes(id)) {
@@ -50,7 +51,7 @@ function CardItem({
 
     try {
       const res = await fetch(
-        `http://localhost:5001/api/auth/${
+        `${API_URL}/api/auth/${
           alreadySaved ? "unsave" : "save"
         }/${id}`,
         {
@@ -98,8 +99,8 @@ function CardItem({
               thumbnail
                 ? thumbnail.startsWith("http")
                   ? thumbnail
-                  : `http://localhost:5001/${thumbnail}`
-                : "http://localhost:5001/images/avatar.png"
+                  : `${API_URL}/${thumbnail}`
+                : `${API_URL}/images/avatar.png`
             }
           />
           <div className="likes-overlay">
@@ -129,8 +130,8 @@ function CardItem({
                   uploader?.avatar
                     ? uploader.avatar.startsWith("http")
                       ? uploader.avatar
-                      : `http://localhost:5001${uploader.avatar}`
-                    : "http://localhost:5001/images/avatar.png"
+                      : `${API_URL}${uploader.avatar}`
+                    : `${API_URL}/images/avatar.png`
                 }
                 alt="Uploader"
                 className="uploader-avatar"

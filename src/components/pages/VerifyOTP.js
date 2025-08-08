@@ -19,6 +19,7 @@ export default function VerifyOTP() {
   const [resending, setResending] = useState(false);
   const [cooldown, setCooldown] = useState(120);
   const [timerActive, setTimerActive] = useState(true);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     let interval = null;
@@ -37,7 +38,7 @@ export default function VerifyOTP() {
     try {
       if (isPasswordReset) {
         // Password reset flow
-        await axios.post("http://localhost:5001/api/auth/verify-reset-otp", {
+        await axios.post(`${API_URL}/api/auth/verify-reset-otp`, {
           email,
           otp,
         });
@@ -45,14 +46,14 @@ export default function VerifyOTP() {
         navigate("/reset-password", { state: { email } });
       } else {
         // Signup flow
-        await axios.post("http://localhost:5001/api/auth/verify-otp", {
+        await axios.post(`${API_URL}/api/auth/verify-otp`, {
           email,
           otp,
         });
 
         toast.success("✅ Email verified! You can now login.");
         const res = await axios.post(
-          "http://localhost:5001/api/auth/login",
+          `${API_URL}/api/auth/login`,
           {
             email,
             password: passwordFromSignup,
@@ -76,8 +77,8 @@ export default function VerifyOTP() {
     setResending(true);
     try {
       const endpoint = isPasswordReset
-        ? "http://localhost:5001/api/auth/resend-reset-otp"
-        : "http://localhost:5001/api/auth/resend-otp";
+        ? `${API_URL}/api/auth/resend-reset-otp`
+        : `${API_URL}/api/auth/resend-otp`;
 
       const res = await axios.post(endpoint, { email });
       toast.success(res.data.message || "OTP resent successfully");
